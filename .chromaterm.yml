@@ -19,6 +19,10 @@ rules:
     regex: Press any key to exit
     color: f#00D1DB bold
 
+  - description: color ont ids in show alarm output
+    regex: \'[0-9]{4,5}\'
+    color: f#FCE94F bold
+
   - description: IPv4s (monkgreen)
     regex: \b(?<!\.)((25[0-5]|(2[0-4]|[0-1]?\d)?\d)\.){3}(25[0-5]|(2[0-4]|[0-1]?\d)?\d)(/\d+)?(?!\.)\b
     color: f#05EA7C bold
@@ -36,7 +40,7 @@ rules:
     regex: Description:\s.*
     color: f#00D1DB bold
 
-  - description: Protocols - (blue)
+  - description: Protocols - (orange)
     regex: (\b[A-Z,v,3-6]{3,5}?\b)
     color: f#00D1DB bold
 
