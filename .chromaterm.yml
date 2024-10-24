@@ -1,0 +1,314 @@
+---
+rules:
+# Colors
+# f#00D1DB bold GREEN
+#
+# GENERAL
+  - description: For your (username)@(devicename)>   (Green Light) (Light Blue)
+    regex: (^\w*)@([a-zA-Z0-9\,\-_]*[>|#|:])([a-zA-z0-9\~\/\-]*)
+    color:
+      1: f#FF875F bold
+      2: f#8AE234 bold
+      3: f#00D1DB bold
+
+  - description: color for tool output on dude scripts
+    regex: ^.* Alarms$
+    color: f#FCE94F bold
+
+  - description: color the exit command on dude scripts
+    regex: Press any key to exit
+    color: f#00D1DB bold
+
+  - description: IPv4s (monkgreen)
+    regex: \b(?<!\.)((25[0-5]|(2[0-4]|[0-1]?\d)?\d)\.){3}(25[0-5]|(2[0-4]|[0-1]?\d)?\d)(/\d+)?(?!\.)\b
+    color: f#05EA7C bold
+
+  - description: IPv6s (monkgreen)
+    regex: 
+      \s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:)))(/\d+)?(?!\.)\b
+    color: f#05EA7C bold
+
+  - description: MAC-addresses (monkgreen)
+    regex: \b[0-9a-f]{2}:[0-9a-f]{2}:[0-9a-f]{2}:[0-9a-f]{2}:[0-9a-f]{2}:[0-9a-f]{2}\b
+    color: f#05EA7C bold
+
+  - description: Interface - Description (blue)
+    regex: Description:\s.*
+    color: f#00D1DB bold
+
+  - description: Protocols - (blue)
+    regex: (\b[A-Z,v,3-6]{3,5}?\b)
+    color: f#00D1DB bold
+
+  # - description: show route [protocol/pref]
+  #   regex: (Local|Direct|[A-Z,v,3-6]{3,5}?)([0-9]{1,3})
+  #   color: 
+  #     1: f#00D1DB bold
+  #     2: f#05EA7C bold
+
+  - description: match up/down status and Enabled/Disabled
+    regex: (\bup\b|\bEnabled\b)|(\bdown\b|\bDisabled?\b)
+    color: 
+      1: f#84FB67 bold
+      2: f#E23434 bold
+
+  - description: BGP Active/Established
+    regex: (\bEstablished\b|\bEstabl\b|\bFull\b)|(\bActive\b)
+    color: 
+      1: f#84FB67 bold
+      2: f#E23434 bold
+
+  - description: Transfer Complete (green)
+    regex: (\bTransfer complete\b)
+    color: f#84FB67 bold
+
+#JUNOS
+# Username
+  - description: username
+    regex: (root)(>)|(root)(#)
+    color:
+      1: f#8AE234 bold
+      2: f#FCE94F bold
+      3: f#8AE234 bold
+      4: f#E23434 bold
+# Curly Braces for show output
+  - description: curly braces (yellow) brackets (yellow)
+    regex: \{|\}|\||\[\|\]|;|<|>|@|#|\+|\-|\*|\%
+    color: f#FCE94F bold
+# Comments
+  - description: text follwing ## (yellow)
+    regex: (##\s.*)
+    color: f#FCE94F bold
+# Warning messages
+  - description: match lines that begin with "warning"
+    regex: ^warning.*
+    color: f#E23434 bold
+    exclusive: true
+# Show output from configuration mode ^((\-?).*([{}]))|^((\-?).*;)
+  - description: match container statements (blue) and leaf statements (jgreen)
+    regex: .*\{$
+    color: f#00D1DB bold
+      #2: f#E23434 bold
+      #3: f#FCE94F bold
+      #4: f#8AE234 bold
+      #5: f#E23434 bold
+# Show output matching leaf statements
+  - description: match container statements (blue) and leaf statements (jgreen)
+    regex: .*\;(\s.*)?
+    color: f#8AE234 bold
+# Command Hierarchy
+  - description: path in hierarchy
+    regex: (\[|\{)(edit.*|master)(\]|\})
+    color: 
+      1: f#FCE94F bold
+      2: f#00D1DB bold
+      3: f#FCE94F bold
+# Possible Completions matching
+  - description: match container (blue) statements with descriptions(green)
+    regex: ^(>\s)([a-z\-0-9]*\s*)([A-Z0-9].*$)?
+    color:
+      1: f#FCE94F bold
+      2: f#00D1DB bold
+      3: f#8AE234 bold
+# Possible completions non container elements (purple) with descriptions (green)
+  - description: match leaf statements (purple)
+    regex: ^(\s\s)([a-z\-0-9]*\s*)([A-Z0-9].*$)?
+    color: 
+      1: f#DA9FF4 bold
+      2: f#DA9FF4 bold
+      3: f#8AE234 bold 
+
+# Possible completions non container elements (purple) with descriptions (green)
+  - description: match leaf statements (purple)
+    regex: ^(\+\s)([a-z\-0-9]*\s*)([A-Z0-9].*$)?
+    color: 
+      1: f#84FB67 bold
+      2: f#DA9FF4 bold
+      3: f#8AE234 bold 
+# Show | compare -
+  - description: match lines that begin with -
+    regex: ^-\s
+    color: f#E23434 bold
+## Security Policies
+#  - description: Security policies (white) from-zone (Light Green) to-zone (Light Red) policy (Bright Green)
+#    regex: (set security policies) (from-zone [a-zA-Z0-9_-]+ )(to-zone [a-zA-Z0-9_-]+ )(policy [a-zA-Z0-9_-]+ )
+#    color:
+#      1: f#FFFFFF
+#      2: f#00F969 bold
+#      3: f#FF0049 bold
+#      4: f#6CFF00 bold
+#
+#  - description: Security Policies - Description (Light Blue)
+#    regex: (description ["\/a-zA-Z0-9\.\s_\*(),-]+)$   #"
+#    color: f#00D1DB bold
+#
+#  - description: Security Policies - Match|Then (White)
+#    regex: (match|then)
+#    color: f#FFFFFF
+#
+#  - description: Security Policies - Source-Adress (Light Green)
+#    regex: (source-address [\/a-zA-Z0-9\._-]+)?
+#    color: f#00F969 bold
+#
+#  - description: Security Policies - Destination-Adress (Light Red)
+#    regex: (destination-address [\/a-zA-Z0-9\._-]+)?
+#    color: f#FF0049 bold
+#
+#  - description: Security Policies - Application (Purple)
+#    regex: (application [\/a-zA-Z0-9\._-]+)?
+#    color: f#F701FF bold
+#
+#  - description: Security Policies - deny (Red Italic Style)
+#    regex: deny$
+#    color: f#FF0000 bold italic
+#
+#  - description: Security Policies - log (Red)
+#    regex: (log [/a-zA-Z0-9\._-]+)?$
+#    color: f#FF0000 bold
+#
+## Show interface
+#  - description: Interface - Physical Interface (Bright Green)
+#    regex: '^Physical interface: [a-zA-Z0-9/-]+'
+#    color: f#6CFF00
+#
+#  - description: Interface - Physical Link Status Up (Bright Green) Down (Red)
+#    regex: Physical link is ((Up)|Down)
+#    color:
+#      1: f#FF0000 bold
+#      2: f#6CFF00
+#
+#  - description: Interface - Last Flapped (Light Blue)
+#    regex: Last flapped\s+:\s.*$
+#    color: f#00D1DB bold
+#
+#  - description: Interface - Input rate (Light Green)
+#    regex: Input rate\s*:\s[0-9]+ bps \([0-9]+ pps\)
+#    color: f#00F969 bold
+#
+#  - description: Interface - Output rate (Red)
+#    regex: Output rate\s*:\s[0-9]+ bps \([0-9]+ pps\)
+#    color: f#FF0049 bold
+#
+#  - description: MAC Address (Purple)
+#    regex: Current address:.*
+#    color: f#F701FF bold
+
+
+### ARISTA / CISCO
+## General
+#  - description: Cisco MAC Address Notation (Purple)
+#    regex: ([0-9a-f]{4}\.[0-9a-f]{4}\.[0-9a-f]{4}).*
+#    color: f#FF0049
+#
+## show run
+#  - description: Interfaces in shutdown (Red) no shutdown (Bright Green)
+#    regex: ((\s\sshutdown)|\s\sno shutdown)
+#    color:
+#      1: f#6CFF00
+#      2: f#ff0000 bold
+#
+#  - description: route-map name (Light Blue)
+#    regex: (route-map\s[a-zA-Z0-9_-]+)
+#    color: f#00D1DB bold
+#
+#  - description: route-map permit (Bright Green) or deny (Red)
+#    regex: \s(permit)|(deny)\s
+#    color:
+#      1: f#6CFF00
+#      2: f#ff0000 bold
+#
+#  - description: route-map permit seq number (Light Blue)
+#    regex: \s(permit|deny)\s([0-9]+)$
+#    color:
+#      2: f#00D1DB bold
+#
+#  - description: route-map set clauses (Light Green)
+#    regex: \s\sset .*
+#    color: f#00F969
+#
+#  - description: prefix-list name (Purple)
+#    regex: (prefix-list\s[a-zA-Z0-9_-]+)
+#    color: f#F701FF bold
+#
+#  - description: prefix-list Matching prefixes eq|gre (Light Green)
+#    regex: \s(eq\s[0-9]+|ge\s[0-9]{1,2}|le\s[0-9]+)
+#    color: f#00F969
+#
+#  - description: ip access-list Name (Purple)
+#    regex: ip access-list ([a-zA-Z0-9_-]+)
+#    color: f#F701FF bold
+#
+#  - description: vrf name (Light Green)
+#    regex: \s\s\svrf .*
+#    color: f#00F969
+#
+#  - description: local-as number (Purple)
+#    regex: local-as .*
+#    color: f#F701FF bold
+#
+#
+## Interfaces
+#  - description: show interfaces description. Interface status in (Red)
+#    regex: (\s\s\sdown|notpresent|lowerlayerdown|admin\sdown)
+#    color: f#ff0000 bold
+#
+#  - description: show interfaces description - Interface name (Bright Green)
+#    regex: (Et[0-9]+|Lo[0-9]|Ma[0-9]|Po[0-9]+|Vl[0-9]+)
+#    color: f#6CFF00
+#
+#  - description: show run (To match inteface... ET VLAN, ETC) (Bright Green)
+#    regex: ^interface.*
+#    color: f#6CFF00
+#
+#  - description: show run (To match vrf forwarding name) (Light Green)
+#    regex: \s\svrf forwarding (.*)$
+#    color:
+#      1: f#00F969
+#
+#  - description: Interface - Physical status Up (Bright Green) Down (Red)
+#    regex: ((^Ethernet[0-9]+ is up)|^Ethernet[0-9]+ is down)
+#    color:
+#      1: f#ff0000 bold
+#      2: f#6CFF00
+#
+#  - description: Interface - Line Protocol Up(Bright Green) Down|lowerl (Red)
+#    regex: ((line protocol is down.*$)|(line protocol is lowerlayer.*)|line protocol is up.*$)
+#    color:
+#      1: f#6CFF00
+#      2: f#ff0000 bold
+#      3: f#ff0000 bold
+#
+#  - description: Interface - Last time it went Up (Bright Green) or Down (Red)
+#    regex: (^\s\sUp\s.*)|(^\s\sDown\s.*)
+#    color:
+#      1: f#6CFF00
+#      2: f#ff0000 bold
+#
+#
+## show ip bgp summary
+#  - description: Matches not Established bgp states (Red)
+#    regex: ((Idle.*)|(Active)|(Connect)|(Established[l]?)|(Estab[l]?))
+#    color:
+#      1: f#6CFF00
+#      2: f#ff0000 bold
+#      3: f#ff0000 bold
+#      4: f#ff0000 bold
+#
+#  - description: show ip bgp summary Local AS Number (Purple)
+#    regex: \slocal AS number ([0-9].*)$
+#    color:
+#      1: f#F701FF bold
+#
+#  - description: show ip bgp VRF NAME (Light Green)
+#    regex: ^BGP summary information for (VRF .*)$
+#    color:
+#      1: f#00F969
+#
+#  - description: show ip route VRF NAME (Light Green)
+#    regex: '^VRF name: .*'
+#    color: f#00F969
+#
+#  - description: show ip route Interface NAME (Bright Green)
+#    regex: ', (Vlan[0-9]+$|Ethernet[0-9]+$|Loopback[0-9]+$|Management[1]+$)'
+#    color:
+#      1: f#6CFF00
