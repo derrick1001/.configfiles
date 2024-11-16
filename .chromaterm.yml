@@ -16,12 +16,13 @@ rules:
     color: f#FCE94F bold
 
   - description: color the exit command on dude scripts
-    regex: Press any key to exit
+    regex: Press any key to exit...
     color: f#00D1DB bold
 
   - description: color ont ids in show alarm output
     regex: \'[0-9]{4,5}\'
     color: f#FCE94F bold
+    exclusive: true
 
   - description: IPv4s (monkgreen)
     regex: \b(?<!\.)((25[0-5]|(2[0-4]|[0-1]?\d)?\d)\.){3}(25[0-5]|(2[0-4]|[0-1]?\d)?\d)(/\d+)?(?!\.)\b
