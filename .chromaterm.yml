@@ -82,7 +82,7 @@ rules:
     color: f#FCE94F bold
 # Comments
   - description: text follwing ## (yellow)
-    regex: (##\s.*)
+    regex: (##\s.*)|(\bOMITTED\b)
     color: f#FCE94F bold
 # Warning messages
   - description: match lines that begin with "warning"
