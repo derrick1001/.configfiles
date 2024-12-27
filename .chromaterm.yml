@@ -84,6 +84,11 @@ rules:
   - description: text follwing ## (yellow)
     regex: (##\s.*)|(\bOMITTED\b)
     color: f#FCE94F bold
+# Possible completions
+  - description: Possible completions text
+    regex: ^Possible completions:$
+    color: f#F59C37 bold
+#DB7E00
 # Warning messages
   - description: match lines that begin with "warning"
     regex: ^warning.*
