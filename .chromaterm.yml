@@ -24,6 +24,14 @@ rules:
     color: f#FCE94F bold
     exclusive: true
 
+  - description: color output of OMITTED lines
+    regex: (^[a-z]*\s)(\{\s/\*\s(OMITTED)\s\*/\s\}\;)
+    color:
+      1: f#00D1DB bold
+      2: f#FCE94F bold
+      3: f#FF875F bold
+    exclusive: true
+
   - description: IPv4s (monkgreen)
     regex: \b(?<!\.)((25[0-5]|(2[0-4]|[0-1]?\d)?\d)\.){3}(25[0-5]|(2[0-4]|[0-1]?\d)?\d)(/\d+)?(?!\.)\b
     color: f#05EA7C bold
