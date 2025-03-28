@@ -24,6 +24,11 @@ rules:
     color: f#FCE94F bold
     exclusive: true
 
+  - description: color pon port in show alarm output
+    regex: \'[2-5]\/[1-2]\/xp[1-9]{1,2}'
+    color: f#FCE94F bold
+    exclusive: true
+
   - description: color output of OMITTED lines
     regex: (^[a-z]*\s)(\{\s/\*\s(OMITTED)\s\*/\s\}\;)
     color:
