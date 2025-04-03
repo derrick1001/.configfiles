@@ -30,12 +30,18 @@ rules:
     exclusive: true
 
   - description: color output of OMITTED lines
-    regex: (^[a-z]*\s)(\{\s/\*\s(OMITTED)\s\*/\s\}\;)
+    regex: (^[a-z\-]*\s|\s*[A-Z\_]*)(\{\s/\*\s(OMITTED)\s\*/\s\}\;)
     color:
       1: f#00D1DB bold
       2: f#FCE94F bold
       3: f#FF875F bold
     exclusive: true
+
+  - description: defined statments (policy, groups etc)
+    regex: ([A-Z]*)_|([A-Z]*)\s
+    color: 
+      1: f#DA9FF4
+      2: f#DA9FF4
 
   - description: IPv4s (monkgreen)
     regex: \b(?<!\.)((25[0-5]|(2[0-4]|[0-1]?\d)?\d)\.){3}(25[0-5]|(2[0-4]|[0-1]?\d)?\d)(/\d+)?(?!\.)\b
@@ -91,7 +97,7 @@ rules:
       4: f#E23434 bold
 # Curly Braces for show output
   - description: curly braces (yellow) brackets (yellow)
-    regex: \{|\}|\||\[\|\]|;|<|>|@|#|\+|\-|\*|\%
+    regex: \{|\}|\||\[\|\]|;|<|>|@|#|\+|\-|\*|\%|\_
     color: f#FCE94F bold
 # Comments
   - description: text follwing ## (yellow)
