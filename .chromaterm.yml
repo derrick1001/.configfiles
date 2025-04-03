@@ -38,7 +38,7 @@ rules:
     exclusive: true
 
   - description: defined statments (policy, groups etc)
-    regex: ([A-Z]*)_|([A-Z]*)\s
+    regex: ([A-Z]{4,8})_|([A-Z]{4,8})\s|;
     color: 
       1: f#DA9FF4
       2: f#DA9FF4
@@ -107,7 +107,6 @@ rules:
   - description: Possible completions text
     regex: ^Possible completions:$
     color: f#F59C37 bold
-#DB7E00
 # Warning messages
   - description: match lines that begin with "warning"
     regex: ^warning.*
